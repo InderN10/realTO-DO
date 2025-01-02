@@ -1,0 +1,57 @@
+.App {
+  display: flex;
+  justify-content: center;
+}
+#BODY{
+  width: 377px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#containerCLASSIFYING{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 345px;
+}
+#writeTASK {
+  width: 280px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--border-border-border, #E4E4E7);
+  margin: 0;
+  padding: 0;
+}
+
+#addBUTTON {
+  width: 59px;
+  height: 40px;
+  border: 0px;
+  color: white;
+  border-radius: 6px;
+  background: #3C82F6;
+}
+
+#allTASKS {
+  width: 38px;
+  height: 32px;
+}
+#activeTASKS{
+  width: 60px;
+  height: 32px;
+}
+#comletedTASKS{
+  width: 87px;
+  height: 32px;
+}
+#title{
+  color: #000;
+text-align: center;
+font-size: 40px;
+font-style: normal;
+font-weight: 600;
+line-height: 28px; 
+letter-spacing: -0.5px;
+
+}
