@@ -115,6 +115,11 @@
   margin-right: 10px;
   border: 0;
   border-radius: 5px;
+  display: none;
+  font-size: 11px;
+}
+#Tasks:hover #deleteBUTT{
+display: block;
 }
 #checkBox-text-container{
   display: flex;
@@ -131,4 +136,22 @@
   align-items: center;
   flex-wrap: wrap;
   overflow: hidden;
+}
+#taskCounter{
+  font-size: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+#deleteAllCompletedButton{
+ border: 0;
+ background-color: white;
+ color: red;
+}
+#p{
+  margin: 0;
+}
+#p1{
+  margin: 0;
 }
