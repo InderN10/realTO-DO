@@ -119,5 +119,16 @@
 #checkBox-text-container{
   display: flex;
   align-items: center;
-
+}
+#trash{
+  border: 0;
+  border-radius: 7px;
+}
+#taskNAME{
+  width: 250px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
 }

@@ -35,14 +35,35 @@ function App() {
       }
     });
     setTodo(newTodos);
-    console.log(todo);
+    console.log(newTodos);
 
   };
+  // function handleDeleteButton(id) {
+  //   const newTodos = todo.map((todo) => todo.id !== id);
+  //   if (todo.id === id) {
+  //     return { ...todo, status: todo.status = "DELETED" }
+  //   }
+  //   setTodo(newTodos);
+  // };
+  function handleDeleteButton(id) {
+    const newTodos = todo.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, status: todo.status = "DELETED" }
+      } else {
+        return todo;
+      }
+
+    });
+    setTodo(newTodos);
+    console.log(newTodos);
+
+  }
+
   function handleFilterState(state) {
     setFilterState(state)
   }
 
-  console.log(todo);
+  // console.log(todo);
 
 
   return (
@@ -58,20 +79,21 @@ function App() {
           <button onClick={() => handleFilterState("ALL")} id='allTASKS'>All</button>
           <button onClick={() => handleFilterState("ACTIVE")} id='activeTASKS'>Active</button>
           <button onClick={() => handleFilterState("DONE")} id='comletedTASKS'>Completed</button>
+          <button onClick={() => handleFilterState("DELETED")} id='trash'>Trash</button>
         </div>
         {todo.filter((todo) => {
-          if (filterState === "ALL") {
+          if (filterState === "ALL" && todo.status !== "DELETED") {
             return true
           } else {
             return todo.status === filterState;
           }
         }).map((todo, index) => {
           return <div id='Tasks' key={index}>
-            <div id='checkBox-text-container'>
-              <input id='checkBox' type="checkbox" checked={todo.status === "DONE"} onChange={() => handleCheckBox(todo.id)} />
-              {todo.text}
-            </div>
-            <button id='deleteBUTT'>Delete</button>
+              <div id='checkBox-text-container'>
+                <input id='checkBox' type="checkbox" checked={todo.status === "DONE"} onChange={() => handleCheckBox(todo.id)} />
+                <div id='taskNAME'> {todo.text} </div>
+              </div>
+              <button onClick={() => handleDeleteButton(todo.id)} id='deleteBUTT'>Delete</button>
           </div>
         }
         )}
