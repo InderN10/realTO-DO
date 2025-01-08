@@ -41,8 +41,13 @@ function App() {
 
   };
   function handleDeleteAllCompleted() {
-    const newTodos = todo.filter((todo) => todo.status !== "DELETED");
-    setTodo(newTodos);
+    if (window.confirm("Are you sure to delete?")) {
+      const newTodos = todo.filter((todo) => todo.status !== "DELETED");
+      setTodo(newTodos);
+    } else {
+
+    }
+
   }
 
   function handleDeleteButton(id) {
@@ -99,17 +104,12 @@ function App() {
             <p id='p1'>Total of {todo.length}</p>
             <p id='p'>Completed Tasks: {doneTasksCount}</p>
           </div>
-
           <div id="deleteAllCompletedSection">
             <button onClick={handleDeleteAllCompleted} id="deleteAllCompletedButton">
               Clear Trash
             </button>
           </div>
-
         </div>
-
-
-
       </div>
     </div >
   );
