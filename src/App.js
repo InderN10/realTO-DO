@@ -44,12 +44,8 @@ function App() {
     if (window.confirm("Are you sure to delete?")) {
       const newTodos = todo.filter((todo) => todo.status !== "DELETED");
       setTodo(newTodos);
-    } else {
-
-    }
-
-  }
-
+    } else { }
+  };
   function handleDeleteButton(id) {
     const newTodos = todo.map((todo) => {
       if (todo.id === id) {
@@ -57,17 +53,13 @@ function App() {
       } else {
         return todo;
       }
-
     });
     setTodo(newTodos);
     console.log(newTodos);
-
-  }
-
+  };
   function handleFilterState(state) {
     setFilterState(state)
-  }
-
+  };
   return (
     <div className="App">
       <div id='BODY'>
@@ -83,6 +75,7 @@ function App() {
           <button style={{ backgroundColor: filterState === "DONE" ? "#3C82F6" : "", color: filterState === "DONE" ? "white" : "" }} onClick={() => handleFilterState("DONE")} id='comletedTASKS'>Completed</button>
           <button style={{ backgroundColor: filterState === "DELETED" ? "#3C82F6" : "", color: filterState === "DELETED" ? "white" : "" }} onClick={() => handleFilterState("DELETED")} id='trash'>Trash</button>
         </div>
+        <div id='taskCOUNTAINER'>
         {todo.filter((todo) => {
           if (filterState === "ALL" && todo.status !== "DELETED") {
             return true
@@ -99,6 +92,8 @@ function App() {
           </div>
         }
         )}
+        </div>
+        
         <div id='taskCounter'>
           <div>
             <p id='p1'>Total of {todo.length}</p>
