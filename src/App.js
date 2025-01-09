@@ -2,6 +2,8 @@
 import './App.css';
 import react, { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
+import { Button } from './components/Button';
+
 const todo = {
   text: "do homework",
   id: 1,
@@ -66,43 +68,41 @@ function App() {
         <p id='title'>To do list</p>
         <div id='container'>
           <input placeholder='write here' value={inputValue} onChange={handleInputChange} id='writeTASK'></input>
-          <button onClick={handleAddButton} id='addBUTTON'>Add</button>
+          <Button handleChange={handleAddButton} id="addBUTTON" tittle="Add"/>
           {error.length > 1 && <div id='error'>{error}</div>}
         </div>
         <div id='containerCLASSIFYING'>
-          <button style={{ backgroundColor: filterState === "ALL" ? "#3C82F6" : "", color: filterState === "ALL" ? "white" : "" }} onClick={() => handleFilterState("ALL")} id='allTASKS'>All</button>
-          <button style={{ backgroundColor: filterState === "ACTIVE" ? "#3C82F6" : "", color: filterState === "ACTIVE" ? "white" : "" }} onClick={() => handleFilterState("ACTIVE")} id='activeTASKS'>Active</button>
-          <button style={{ backgroundColor: filterState === "DONE" ? "#3C82F6" : "", color: filterState === "DONE" ? "white" : "" }} onClick={() => handleFilterState("DONE")} id='comletedTASKS'>Completed</button>
-          <button style={{ backgroundColor: filterState === "DELETED" ? "#3C82F6" : "", color: filterState === "DELETED" ? "white" : "" }} onClick={() => handleFilterState("DELETED")} id='trash'>Trash</button>
+          <Button style={{ backgroundColor: filterState === "ALL" ? "#3C82F6" : "", color: filterState === "ALL" ? "white" : "" }} handleChange={() => handleFilterState("ALL")} tittle={"All"} id={"allTASKS"}/>
+          <Button style={{ backgroundColor: filterState === "ACTIVE" ? "#3C82F6" : "", color: filterState === "ACTIVE" ? "white" : "" }} handleChange={() => handleFilterState("ACTIVE")} tittle={"Active"} id={"activeTASKS"}/>
+          <Button style={{ backgroundColor: filterState === "DONE" ? "#3C82F6" : "", color: filterState === "DONE" ? "white" : "" }} handleChange={() => handleFilterState("DONE")} id="comletedTASKS" tittle={"Completed"} />
+          <Button style={{ backgroundColor: filterState === "DELETED" ? "#3C82F6" : "", color: filterState === "DELETED" ? "white" : "" }} handleChange={() => handleFilterState("DELETED")} tittle="Trash" id="trash" />  
         </div>
         <div id='taskCOUNTAINER'>
-        {todo.filter((todo) => {
-          if (filterState === "ALL" && todo.status !== "DELETED") {
-            return true
-          } else {
-            return todo.status === filterState;
-          }
-        }).map((todo, index) => {
-          return <div id='Tasks' key={index}>
-            <div id='checkBox-text-container'>
-              <input id='checkBox' type="checkbox" checked={todo.status === "DONE"} onChange={() => handleCheckBox(todo.id)} />
-              <div id='taskNAME'> {todo.text} </div>
+          {todo.filter((todo) => {
+            if (filterState === "ALL" && todo.status !== "DELETED") {
+              return true
+            } else {
+              return todo.status === filterState;
+            }
+          }).map((todo, index) => {
+            return <div id='Tasks' key={index}>
+              <div id='checkBox-text-container'>
+                <input id='checkBox' type="checkbox" checked={todo.status === "DONE"} onChange={() => handleCheckBox(todo.id)} />
+                <div id='taskNAME'> {todo.text} </div>
+              </div>
+              <Button handleChange={() => handleDeleteButton(todo.id)} id="deleteBUTT" tittle="Move to trash" />
             </div>
-            <button onClick={() => handleDeleteButton(todo.id)} id='deleteBUTT'>Move to trash</button>
-          </div>
-        }
-        )}
+          }
+          )}
         </div>
-        
+
         <div id='taskCounter'>
           <div>
             <p id='p1'>Total of {todo.length}</p>
             <p id='p'>Completed Tasks: {doneTasksCount}</p>
           </div>
           <div id="deleteAllCompletedSection">
-            <button onClick={handleDeleteAllCompleted} id="deleteAllCompletedButton">
-              Clear Trash
-            </button>
+          <Button handleChange={handleDeleteAllCompleted} id="deleteAllCompletedButton" tittle="Clear Trash"/>
           </div>
         </div>
       </div>
