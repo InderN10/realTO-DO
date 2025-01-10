@@ -3,7 +3,6 @@ import './App.css';
 import react, { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from './components/Button';
-
 const todo = {
   text: "do homework",
   id: 1,
@@ -68,14 +67,14 @@ function App() {
         <p id='title'>To do list</p>
         <div id='container'>
           <input placeholder='write here' value={inputValue} onChange={handleInputChange} id='writeTASK'></input>
-          <Button handleChange={handleAddButton} id="addBUTTON" tittle="Add"/>
+          <Button handleChange={handleAddButton} id="addBUTTON" tittle="Add" />
           {error.length > 1 && <div id='error'>{error}</div>}
         </div>
         <div id='containerCLASSIFYING'>
-          <Button style={{ backgroundColor: filterState === "ALL" ? "#3C82F6" : "", color: filterState === "ALL" ? "white" : "" }} handleChange={() => handleFilterState("ALL")} tittle={"All"} id={"allTASKS"}/>
-          <Button style={{ backgroundColor: filterState === "ACTIVE" ? "#3C82F6" : "", color: filterState === "ACTIVE" ? "white" : "" }} handleChange={() => handleFilterState("ACTIVE")} tittle={"Active"} id={"activeTASKS"}/>
+          <Button style={{ backgroundColor: filterState === "ALL" ? "#3C82F6" : "", color: filterState === "ALL" ? "white" : "" }} handleChange={() => handleFilterState("ALL")} tittle={"All"} id={"allTASKS"} />
+          <Button style={{ backgroundColor: filterState === "ACTIVE" ? "#3C82F6" : "", color: filterState === "ACTIVE" ? "white" : "" }} handleChange={() => handleFilterState("ACTIVE")} tittle={"Active"} id={"activeTASKS"} />
           <Button style={{ backgroundColor: filterState === "DONE" ? "#3C82F6" : "", color: filterState === "DONE" ? "white" : "" }} handleChange={() => handleFilterState("DONE")} id="comletedTASKS" tittle={"Completed"} />
-          <Button style={{ backgroundColor: filterState === "DELETED" ? "#3C82F6" : "", color: filterState === "DELETED" ? "white" : "" }} handleChange={() => handleFilterState("DELETED")} tittle="Trash" id="trash" />  
+          <Button style={{ backgroundColor: filterState === "DELETED" ? "#3C82F6" : "", color: filterState === "DELETED" ? "white" : "" }} handleChange={() => handleFilterState("DELETED")} tittle="Trash" id="trash" />
         </div>
         <div id='taskCOUNTAINER'>
           {todo.filter((todo) => {
@@ -102,7 +101,7 @@ function App() {
             <p id='p'>Completed Tasks: {doneTasksCount}</p>
           </div>
           <div id="deleteAllCompletedSection">
-          <Button handleChange={handleDeleteAllCompleted} id="deleteAllCompletedButton" tittle="Clear Trash"/>
+            <Button handleChange={handleDeleteAllCompleted} id="deleteAllCompletedButton" tittle="Clear Trash" />
           </div>
         </div>
       </div>
